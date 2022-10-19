@@ -55,13 +55,13 @@ if (canvas) {
 ```
 
 ## 案例展示
-### 1.探照灯效果
+### 1. 探照灯效果
 <img src="./images/searchlight.gif" alt="" width={1200}/>
 
-### 2.球体碰撞交互效果
+### 2. 球体碰撞交互效果
 <img src="./images/globuleInteraction.gif" alt="" width={1000}/>
 
-### 2.消灭行星小游戏
+### 3. 消灭行星小游戏
 <img src="./images/killPlanet.gif" alt="" width={1000}/>
 
 ## API文档
