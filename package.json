@@ -1,13 +1,15 @@
 {
   "name": "sphere-collision",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "一个用于在Canvas上实现球体碰撞场景，高可用、高扩展的库。",
   "main": "index.js",
   "keywords": [
     "SphereCollision",
     "canvas",
     "sphere",
-    "collision"
+    "collision",
+    "javascript",
+    "typescript"
   ],
   "author": "River"
 }
