@@ -186,9 +186,9 @@ if (canvas) {
 | inCollisionGlobule                 | boolean                                                                        | 是否与其他球体发生碰撞的状态                                                                                      |
 | inCollisionGlobuleList             | GlobuleC[]                                                                     | 与其他球体碰撞的其他球体实例列表                                                                                    |
 | inCollisionWall                    | boolean                                                                        | 是否与墙体发生碰撞的状态                                                                                        |
-| beforeDrawGlobule                  | (globule: GlobuleC) => void | null                                             | 每一帧绘制该球体之前执行的钩子函数                                                                                   |
-| afterDrawGlobule                   | (globule: GlobuleC) => void | null                                             | 每一帧绘制该球体之后执行的钩子函数                                                                                   |
-| afterCalculateNextFrameGlobule     | (nextFrameGlobule: GlobuleC) => void                                           | 每一帧绘制球体后,计算并修改为下一帧状态后执行的钩子函数                                                                        |
+| beforeDrawGlobule                  | (globule: GlobuleC) => void \| null                                             | 每一帧绘制该球体之前执行的钩子函数                                                                                   |
+| afterDrawGlobule                   | (globule: GlobuleC) => void \| null                                             | 每一帧绘制该球体之后执行的钩子函数                                                                                   |
+| afterCalculateNextFrameGlobule     | (nextFrameGlobule: GlobuleC) => void \| null                                          | 每一帧绘制球体后,计算并修改为下一帧状态后执行的钩子函数                                                                        |
 | **方法**                                 |                                                                                |                                                                                                     |
 | addOutForce                        | (outForceVX: number, outForceVY: number, isCollision?:boolean = false) => void | 添加外力。用于动态增加或减小球体的速度                                                                                 |
 
