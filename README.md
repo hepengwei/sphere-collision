@@ -81,7 +81,7 @@ if (canvas) {
 | frameId                      | number                                                | requestAnimationFrame方法返回的ID |                        |      |
 | globuleList                  | GlobuleC[]                                            | 保存所有球体实例的列表                  |                        |      |
 | animationState               | enum AnimationState{"waitStart","inAnimation","stop"} | 当前动画状态                       |                        |      |
-| mousePos(v1.1.0新增)           | MousePos                                              | 当前鼠标在Canvas中的位置坐标            |                        |      |
+| mousePos                       | MousePos                                              | 当前鼠标在Canvas中的位置坐标            |                        |      |
 | prevMousePos(v1.1.0新增)       | MousePos                                              | 前一次鼠标在Canvas中的位置坐标           |                        |      |
 | isMouseDown(v1.1.0新增)        | boolean                                               | 当前鼠标在Canvas中是否按下             |                        |      |
 | mouseDownPos(v1.1.0新增)       | MousePos                                              | 鼠标在Canvas中按下时的位置坐标           |                        |      |
