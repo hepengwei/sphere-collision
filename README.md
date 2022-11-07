@@ -66,6 +66,10 @@ if (canvas) {
 ### 4.各类球体自由落体交互效果
 <img src="./images/freeFallingBody.gif" alt="" width={1000}/>
 
+### 5. 炫酷倒计时动画
+
+以上案例源码均在visualization-collection开源项目中，github地址：[https://github.com/hepengwei/visualization-collection](https://github.com/hepengwei/visualization-collection)
+
 ## API文档
 
 **SphereCollisionC**
@@ -104,6 +108,7 @@ if (canvas) {
 | vy                                 | number                                                 | 在垂直方向的速度（向下为正方向）                                                                                    | 0                                                          | 否    |
 | radius                             | number                                                 | 半径                                                                                                  | 10                                                         | 否    |
 | color                              | string                                                 | 颜色                                                                                                  | "#666666"                                                  | 否    |
+| isPureColor(v1.1.3新增)            | boolean                                                | 是否为纯色                                                                                             | false                                                      | 否    |
 | alpha                              | number                                                 | 透明度                                                                                                 | 1                                                          | 否    |
 | alphaChangeV                       | number                                                 | 透明度改变的速度（正数增加，负数减小）                                                                                 | 0                                                          | 否    |
 | bgImg                              | string                                                 | 背景图片                                                                                                | ""                                                         | 否    |
@@ -116,6 +121,7 @@ if (canvas) {
 | fixedPos                           | boolean                                                | 是否固定位置                                                                                              | false                                                      | 否    |
 | receiveOutForce                    | boolean                                                | 是否接受外力                                                                                              | true                                                       | 否    |
 | receiveWallForce                   | boolean                                                | 是否接受墙的力（与墙体发生碰撞）                                                                                    | true                                                       | 否    |
+| resistanceWallDirection(v1.1.3新增) | Direction[]                                           | 有阻力的墙的方向                                                                                            | ["bottom", "top", "left", "right"]                   | 否    |
 | onlyCheckCollision                 | boolean                                                | 当不接受外力时，是否检测碰撞（检测碰撞相关状态但不获取外力）                                                                      | false                                                      | 否    |
 | maxMouseOutForce                   | number                                                 | 鼠标交互时能提供的最大力限制                                                                                      | null                                                       | 否    |
 | maxMoveV                           | number                                                 | 最大移动速度                                                                                              | null                                                       | 否    |
@@ -151,6 +157,14 @@ if (canvas) {
 
 <br/>
 
+**Direction**
+
+| 属性      | 数据类型                                | 说明 |
+|:----------|:---------------------------------------|:-----|
+| Direction | "bottom" \| "top" \| "left" \| "right" | 方向 |
+
+<br/>
+
 **GlobuleC**
 
 | 属性                                 | 数据类型                                                                           | 说明                                                                                                  |
@@ -169,6 +183,7 @@ if (canvas) {
 | vy                                 | number                                                                         | 在垂直方向的速度（向下为正方向）                                                                                    |
 | radius                             | number                                                                         | 半径                                                                                                  |
 | color                              | string                                                                         | 颜色                                                                                                  |
+| isPureColor(v1.1.3新增)            | boolean                                                                         | 是否为纯色                                                                                                  |
 | alpha                              | number                                                                         | 透明度                                                                                                 |
 | alphaChangeV                       | number                                                                         | 透明度改变的速度（正数增加，负数减小）                                                                                 |
 | bgImg                              | string                                                                         | 背景图片                                                                                                |
@@ -179,6 +194,7 @@ if (canvas) {
 | fixedPos                           | boolean                                                                        | 是否固定位置                                                                                              |
 | receiveOutForce                    | boolean                                                                        | 是否接受外力                                                                                              |
 | receiveWallForce                   | boolean                                                                        | 是否接受墙的力（与墙体发生碰撞）                                                                                    |
+| resistanceWallDirection(v1.1.3新增) | Direction[]                                                                   | 有阻力的墙的方向                                                                                    |
 | onlyCheckCollision                 | boolean                                                                        | 当不接受外力时，是否检测碰撞（检测碰撞相关状态但不获取外力）                                                                      |
 | mousePos                           | MousePos                                                                       | 鼠标相对于canvas的位置坐标                                                                                    |
 | maxMoveV                           | number \| null                                                                  | 最大移动速度                                                                                              |
@@ -193,18 +209,23 @@ if (canvas) {
 | addOutForce                        | (outForceVX: number, outForceVY: number, isCollision?:boolean = false) => void | 添加外力。用于动态增加或减小球体的速度                                                                                 |
 
 ## 特别说明
-* 球体的fixedPos属性为true时， 获取不了外力，所以小球不会移动，但还是会使其他球体受到外力，进行反弹。
-* 球体的receiveOutForce属性为false时，获取不了来自鼠标和其他小球的外力, 所以不会与另一球体发生碰撞，即使另一个球体的receiveOutForce属性为true。
-* 球体的noReceiveWallForce属性为true时，获取不了来自墙体的外力，所以不会与墙体发生碰撞。
-* 球体的beforeDrawGlobule和afterDrawGlobule两个钩子函数，主要作用是在绘制球体之前和之后分别去绘制其他元素，而afterCalculateNextFrameGlobule钩子函数是用于做一些其他的逻辑判断，因为只有这个函数里拿到的球体实例是带有是否发生碰撞等相关信息的。
+* 球体的fixedPos属性为true时， 获取不了外力，所以球体不会移动，但还是会使其他球体受到外力，进行反弹。
+* 球体的receiveOutForce属性为false时，获取不了鼠标穿过和其他球体碰撞产生的外力，即使另一个球体的receiveOutForce属性为true。
+* 球体的receiveWallForce属性为false时，获取不了来自墙体的外力，所以不会与墙体发生碰撞。
+* 球体的beforeDrawGlobule和afterDrawGlobule两个钩子函数，主要作用是在绘制球体之前和之后分别去绘制其他元素，而afterCalculateNextFrameGlobule钩子函数是用于做一些其他的逻辑判断，因为只有这个函数里拿到的球体实例是带有是否发生碰撞等相关信息的
 * 如果实例化SphereCollision对象时传入了beforeDrawGlobules钩子函数，并且需要在每一帧绘制前要清除整个画布，则需要使用者自己清除，这是考虑到有些不需要清除的场景。
 * 如果要获取鼠标相关的信息或者想要实现鼠标交互，实例化SphereCollision对象时就必须在第四个参数options中传入monitorMousePos为true。
 * 如果需要的话，可以在任何时候动态地修改球体实例的所有属性值，以满足自己的自定义需求。
 
 ## 关键版本更新日志
+* v1.1.3
+1. 新增支持纯色球体
+2. 新增支持四面墙中只有部分墙面有阻力，与球体发生碰撞
+3. 解决一些已知bug
+
 * v1.1.0
 1. 考虑后续的功能扩展，修改了SphereCollision类的参数，将之前的第四个及之后的参数都统一放到options对象中，并作为第四个参数传入。
-2. 新增支持上下左右四个方向的引力方向
+2. 新增支持上下左右四个引力方向
 3. 新增支持球体进行鼠标拖拽交互
 4. 新增的相关属性及方法可自行查阅API文档
 <br/>

@@ -29,6 +29,7 @@ export interface AfterDrawGlobuleFn {
 export interface AfterCalculateNextFrameGlobuleFn {
   (nextFrameGlobule: GlobuleC): void;
 }
+export type Direction = "bottom" | "top" | "left" | "right";
 export interface GlobuleOptions {
   id?: any;
   initX?: number;
@@ -37,6 +38,7 @@ export interface GlobuleOptions {
   vy?: number;
   radius?: number;
   color?: string;
+  isPureColor?: boolean;
   alpha?: number;
   alphaChangeV?: number;
   bgImg?: string;
@@ -55,6 +57,7 @@ export interface GlobuleOptions {
   fixedPos?: boolean;
   receiveOutForce?: boolean;
   receiveWallForce?: boolean;
+  resistanceWallDirection?: Direction[];
   onlyCheckCollision?: boolean;
   maxMouseOutForce?: number | null;
   maxMoveV?: number | null;
@@ -115,6 +118,7 @@ export declare class GlobuleC {
   vy: number;
   radius: number;
   color: string;
+  isPureColor: boolean;
   alpha: number;
   alphaChangeV: number;
   bgImg: string;
@@ -131,6 +135,7 @@ export declare class GlobuleC {
   fixedPos: boolean;
   receiveOutForce: boolean;
   receiveWallForce: boolean;
+  resistanceWallDirection: Direction[];
   onlyCheckCollision: boolean;
   mousePos: MousePos;
   maxMoveV: number | null;
@@ -157,6 +162,7 @@ export declare class GlobuleC {
     vy?: number,
     radius?: number,
     color?: string,
+    isPureColor?: boolean,
     alpha?: number,
     alphaChangeV?: number,
     bgImg?: string,
@@ -169,6 +175,7 @@ export declare class GlobuleC {
     fixedPos?: boolean,
     receiveOutForce?: boolean,
     receiveWallForce?: boolean,
+    resistanceWallDirection?: Direction[],
     onlyCheckCollision?: boolean,
     maxMouseOutForce?: number | null,
     mousePos?: MousePos,
