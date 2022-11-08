@@ -67,6 +67,7 @@ if (canvas) {
 <img src="./images/freeFallingBody.gif" alt="" width={1000}/>
 
 ### 5. 炫酷倒计时动画
+<img src="./images/countDown.gif" alt="" width={1000}/>
 
 以上案例源码均在visualization-collection开源项目中，github地址：[https://github.com/hepengwei/visualization-collection](https://github.com/hepengwei/visualization-collection)
 
