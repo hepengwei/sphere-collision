@@ -68,12 +68,11 @@ if (canvas) {
 
 ### 5. 炫酷倒计时动画
 <img src="./images/countDown.gif" alt="" width={1000}/>
-
 <br/>
-在线体验(PC端)：[https://hepengwei.github.io/visualization-collection/#/canvas/searchlight](https://hepengwei.github.io/visualization-collection/#/canvas/searchlight)
 
-<br/>
-以上案例源码均在visualization-collection开源项目中，github地址：[https://github.com/hepengwei/visualization-collection](https://github.com/hepengwei/visualization-collection)
+#### 在线体验(PC端)：[https://hepengwei.github.io/visualization-collection/#/canvas/searchlight](https://hepengwei.github.io/visualization-collection/#/canvas/searchlight)
+
+#### 以上案例源码均在visualization-collection开源项目中，github地址：[https://github.com/hepengwei/visualization-collection](https://github.com/hepengwei/visualization-collection)
 
 ## API文档
 
