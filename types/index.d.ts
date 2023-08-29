@@ -114,6 +114,8 @@ export declare class GlobuleC {
   initY: number;
   x: number;
   y: number;
+  previousX: number | null;
+  previousY: number | null;
   vx: number;
   vy: number;
   radius: number;
@@ -215,4 +217,14 @@ export declare class GlobuleC {
   private _checkOverlap;
   private _checkOverWall;
   private _addGravitation;
+  getXAndYValue(
+    value: number,
+    xValue: number,
+    yVlaue: number
+  ): {
+    x: number;
+    y: number;
+  };
+  private _getLineEquation;
+  private _getCosspoint;
 }
