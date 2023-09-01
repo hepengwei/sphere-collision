@@ -204,6 +204,7 @@ export declare class GlobuleC {
     collisionRectHeight: number
   ): void;
   private _getOutForce;
+  private _getMouseOutForce;
   addOutForce(
     outForceVX: number,
     outForceVY: number,

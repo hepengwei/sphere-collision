@@ -232,6 +232,7 @@ if (canvas) {
 - 球体的 beforeDrawGlobule 和 afterDrawGlobule 两个钩子函数，主要作用是在绘制球体之前和之后分别去绘制其他元素，而 afterCalculateNextFrameGlobule 钩子函数是用于做一些其他的逻辑判断，因为只有这个函数里拿到的球体实例是带有是否发生碰撞等相关信息的
 - 如果实例化 SphereCollision 对象时传入了 beforeDrawGlobules 钩子函数，并且需要在每一帧绘制前要清除整个画布，则需要使用者自己清除，这是考虑到有些不需要清除的场景。
 - 如果要获取鼠标相关的信息或者想要实现鼠标交互，实例化 SphereCollision 对象时就必须在第四个参数 options 中传入 monitorMousePos 为 true。
+- 如果给球体配置了 gDirection 和 gCoefficient 属性，建议就不要配置 collisionLossV 了。
 - 如果需要的话，可以在任何时候动态地修改球体实例的所有属性值，以满足自己的自定义需求。
 
 ## 关键版本更新日志
