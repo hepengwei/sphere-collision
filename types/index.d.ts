@@ -59,6 +59,7 @@ export interface GlobuleOptions {
   receiveWallForce?: boolean;
   resistanceWallDirection?: Direction[];
   onlyCheckCollision?: boolean;
+  perfectlyElasticCollision?: boolean;
   maxMouseOutForce?: number | null;
   maxMoveV?: number | null;
   beforeDrawGlobule?: BeforeDrawGlobuleFn | null | undefined;
@@ -139,6 +140,7 @@ export declare class GlobuleC {
   receiveWallForce: boolean;
   resistanceWallDirection: Direction[];
   onlyCheckCollision: boolean;
+  perfectlyElasticCollision: boolean;
   mousePos: MousePos;
   maxMoveV: number | null;
   controlledByMouse: boolean;
@@ -157,34 +159,8 @@ export declare class GlobuleC {
   constructor(
     ctx: CanvasRenderingContext2D,
     canvas: HTMLCanvasElement,
-    id?: any,
-    initX?: number,
-    initY?: number,
-    vx?: number,
-    vy?: number,
-    radius?: number,
-    color?: string,
-    isPureColor?: boolean,
-    alpha?: number,
-    alphaChangeV?: number,
-    bgImg?: string,
-    collisionLossV?: number,
-    moveLossV?: number,
-    gDirection?: "toInit" | "toBottom" | "toTop" | "toLeft" | "toRight",
-    gCoefficient?: number,
-    requiredMouseInteraction?: boolean,
-    mouseInteractionBehavior?: "over" | "drag",
-    fixedPos?: boolean,
-    receiveOutForce?: boolean,
-    receiveWallForce?: boolean,
-    resistanceWallDirection?: Direction[],
-    onlyCheckCollision?: boolean,
-    maxMouseOutForce?: number | null,
-    mousePos?: MousePos,
-    maxMoveV?: number | null,
-    beforeDrawGlobule?: BeforeDrawGlobuleFn | null,
-    afterDrawGlobule?: AfterDrawGlobuleFn | null,
-    afterCalculateNextFrameGlobule?: AfterCalculateNextFrameGlobuleFn | null
+    globuleOptions: GlobuleOptions,
+    mousePos?: MousePos
   );
   private _draw;
   _drawCurrentFrame(
@@ -204,6 +180,7 @@ export declare class GlobuleC {
     collisionRectHeight: number
   ): void;
   private _getOutForce;
+  private _getPerfectlyElasticOutForce;
   private _getMouseOutForce;
   addOutForce(
     outForceVX: number,
@@ -226,6 +203,7 @@ export declare class GlobuleC {
     x: number;
     y: number;
   };
+  private _getAngleTypeBetweenTwoVectors;
   private _getLineEquation;
   private _getCosspoint;
 }
